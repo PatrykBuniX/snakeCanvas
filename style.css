@@ -1,0 +1,25 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  border: 1px solid green;
+}
+
+p {
+  font-size: 2.5em;
+  text-align: center;
+}
