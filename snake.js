@@ -15,6 +15,8 @@ let snake = [
   [20, 22]
 ];
 
+let speed = 100;
+
 //directions:
 //0-top
 //1-right
@@ -101,6 +103,28 @@ const update = () => {
       [20, 22]
     ];
   }
+  clearInterval(game);
+  if (snake.length <= 9) {
+    speed = 90;
+  } else if (snake.length <= 19) {
+    speed = 80;
+  } else if (snake.length <= 29) {
+    speed = 70;
+  } else if (snake.length <= 39) {
+    speed = 60;
+  } else if (snake.length <= 49) {
+    speed = 50;
+  } else if (snake.length <= 59) {
+    speed = 40;
+  } else if (snake.length <= 69) {
+    speed = 30;
+  } else if (snake.length <= 79) {
+    speed = 20;
+  } else if (snake.length <= 89) {
+    speed = 10;
+  }
+  game = setInterval(update, speed);
+
   score.innerText = `🐍\nSCORE:\n👉${snake.length}👈`;
   draw();
 };
@@ -123,10 +147,15 @@ const playGame = () => {
   if (playing) return;
   playing = true;
   button.style.display = "none";
-  game = setInterval(update, 100);
+  game = setInterval(update, speed);
 };
 
 window.addEventListener("keyup", changeDirection);
 button.addEventListener("click", playGame);
+window.addEventListener("keyup", e => {
+  if (e.which === 13) {
+    playGame();
+  }
+});
 
 // playGame();
